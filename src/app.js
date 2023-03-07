@@ -4,6 +4,7 @@ const cors = require('cors')
 const morgan = require('morgan')
 const { router } = require('./routes/auth.routes.js')
 const { router: index } = require('./routes/index.js')
+require('./database')
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
