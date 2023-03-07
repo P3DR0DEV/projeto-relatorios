@@ -3,7 +3,7 @@ const { extname, resolve } = require('path')
 
 const aleatorio = () => Math.floor(Math.random() * 10000 + 10000);
 
-export default {
+const MulterCfg = {
   fileFilter: (req, file, callback) => {
     if (file.mimetype !== 'image/png' && file.mimetype !== 'image/jpeg') {
       return callback(new multer.MulterError('Invalid file type.'));
@@ -19,3 +19,5 @@ export default {
     },
   }),
 };
+
+module.exports = MulterCfg
