@@ -12,8 +12,7 @@ const show = async (req, res) => {
     include: {
       model: Foto,
       attributes: ['url', 'filename'],
-    },
-
+    }
   });
   res.json(alunos);
 }
