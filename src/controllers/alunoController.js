@@ -1,5 +1,6 @@
 const { Aluno } = require('../Models/Aluno')
 const { Foto } = require('../Models/Foto')
+const { Turma } = require('../Models/Turma')
 
 const show = async (req, res) => {
   const alunos = await Aluno.findAll({
@@ -8,10 +9,10 @@ const show = async (req, res) => {
       'nome',
       'matricula',
     ],
-    order: [['id', 'DESC'], [Foto, 'id', 'DESC']],
+    order: [['id', 'DESC'], [Turma, 'id', 'DESC']],
     include: {
-      model: Foto,
-      attributes: ['url', 'filename'],
+      model: [Turma],
+      attributes: ['nome'],
     }
   });
   res.json(alunos);
