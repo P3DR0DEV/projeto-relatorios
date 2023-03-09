@@ -6,5 +6,5 @@ export interface Turma {
 
 export interface CardType {
   nome: string
-  alunos: number
+  alunos: number | undefined
 }
