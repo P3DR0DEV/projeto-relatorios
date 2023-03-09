@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const { router: authRouter } = require('./routes/auth.routes.js')
 const { router: uploadRouter } = require('./routes/uploadRouter.js')
 const { router: alunoRouter } = require('./routes/alunoRouter.js')
+const { router: turmaRouter } = require('./routes/turmaRouter.js')
 require('./database')
 
 app.use(cors());
@@ -18,6 +19,7 @@ app.use(express.json({ type: 'application/vnd.api+json' }));
 app.use('/api', authRouter)
 app.use('/uploads', uploadRouter)
 app.use('/alunos', alunoRouter)
+app.use('/turmas', turmaRouter)
 
 module.exports = {
   app
