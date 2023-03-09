@@ -1,10 +1,10 @@
 export interface Turma {
   id: number
   nome: string
-  alunos?: Array<object>
+  Alunos?: Array<object>
 }
 
 export interface CardType {
   nome: string
-  alunos: number | undefined
+  Alunos?: number
 }

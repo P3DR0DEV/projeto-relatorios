@@ -21,6 +21,7 @@ export function Turmas() {
   function toggleCreateNewClass(e: MouseEvent<HTMLButtonElement>) {
 
   }
+
   return (
     <div>
       <div className="create-turma">
@@ -29,7 +30,7 @@ export function Turmas() {
           Cadastrar Turma
           <AiOutlinePlus fontSize={'1.25rem'} />
         </button>
-
+{/* 
         {newClass ? '' : /** Componente para criação de nova turma */}
       </div>
       <div className="turmas-card">
@@ -38,7 +39,12 @@ export function Turmas() {
           <p>Nº Alunos</p>
         </div>
 
-        {data.map(turma => <TurmaCard nome={turma.nome} alunos={turma.alunos?.length} />)}
+        {data.map(turma => {
+          return (
+            <TurmaCard key={turma.id} nome={turma.nome} Alunos={turma.Alunos?.length} />
+          )
+        })
+        }
       </div>
     </div>
   )
