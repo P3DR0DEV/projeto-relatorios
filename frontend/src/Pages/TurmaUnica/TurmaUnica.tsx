@@ -1,15 +1,16 @@
 import { Turma } from "@/types"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState, MouseEvent } from "react"
 import { Link, useParams } from "react-router-dom"
 import { IoIosArrowBack } from "react-icons/io"
 import { AlunoList } from "./components/AlunoList"
 import { AiOutlinePlus } from "react-icons/ai"
+import { CriaAluno } from "./components/CriaAluno"
 import './TurmaUnica.css'
 
 export function TurmaUnica() {
   const { id } = useParams()
-
   const [turma, setTurma] = useState<Turma>()
+  const dialog = useRef<HTMLDialogElement>(null)
 
   useEffect(() => {
     fetch(`http://localhost:3000/turmas/${id}`, {
@@ -23,6 +24,10 @@ export function TurmaUnica() {
       .then(data => setTurma(data))
   }, [])
 
+  function toggleCreateNewClass(e: MouseEvent<HTMLButtonElement>) {
+    dialog.current?.showModal();
+  }
+
   return (
     <>
       <div className="turma-unica">
@@ -35,12 +40,13 @@ export function TurmaUnica() {
             <h1 className="nome-turma">{turma?.nome}</h1>
           </div>
 
-          <button className="button-create-aluno" >
+          <button className="button-create-aluno" onClick={toggleCreateNewClass}>
             Cadastrar Aluno
             <AiOutlinePlus fontSize={"1.25rem"} />
           </button>
         </div>
 
+        <CriaAluno dialog={dialog} turmaId={Number(id)} />
 
         <div>
           <div className="turma-header">

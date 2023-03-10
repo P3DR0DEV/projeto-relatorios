@@ -4,3 +4,8 @@ export interface AlunoType {
   matricula: number
   nome: string
 }
+
+export interface NewAluno {
+  matricula: number
+  nome: string
+}
