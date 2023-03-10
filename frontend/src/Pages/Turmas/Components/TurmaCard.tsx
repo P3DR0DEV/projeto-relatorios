@@ -5,7 +5,7 @@ import { CardType } from '@/types'
 export function TurmaCard({ nome, Alunos }: CardType) {
   return (
     <div className="card-select-turma">
-      <Link to={'/'}>{nome}</Link>
+      <Link to={'/'} className='nome-turma'>{nome}</Link>
       <p>{Alunos}</p>
     </div>
   )

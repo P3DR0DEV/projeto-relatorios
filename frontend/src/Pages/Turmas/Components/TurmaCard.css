@@ -6,3 +6,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+.nome-turma {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #723de8;
+}

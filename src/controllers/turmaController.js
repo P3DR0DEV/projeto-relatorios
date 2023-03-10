@@ -43,6 +43,7 @@ const showOne = async (req, res) => {
 }
 
 const create = async (req, res) => {
+  console.log(req.body)
   try {
     const turma = await Turma.create(req.body);
 
