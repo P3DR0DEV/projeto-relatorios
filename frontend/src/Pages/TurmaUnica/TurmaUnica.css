@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  width: 97%;
+  width: 65%;
   margin: auto;
 }
 
@@ -51,4 +51,23 @@
   justify-content: space-between;
   width: 30%;
   max-width: 30%;
+}
+
+.turma-unica-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.button-create-aluno {
+  border-radius: 24px;
+  border: none;
+  padding: 0.7rem;
+  color: #fff;
+  display: inline-flex;
+  justify-content: center;
+  gap: 0.3rem;
+  font-size: 1.1rem;
+  background-color: #863bff;
+  cursor: pointer;
+  width: fit-content;
 }

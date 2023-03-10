@@ -1,9 +1,10 @@
 import { Turma } from "@/types"
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-import './TurmaUnica.css'
 import { IoIosArrowBack } from "react-icons/io"
 import { AlunoList } from "./components/AlunoList"
+import { AiOutlinePlus } from "react-icons/ai"
+import './TurmaUnica.css'
 
 export function TurmaUnica() {
   const { id } = useParams()
@@ -25,11 +26,19 @@ export function TurmaUnica() {
   return (
     <>
       <div className="turma-unica">
-        <div className="turma-unica-nome">
-          <Link to={'/turmas'} className="link">
-            <IoIosArrowBack />
-          </Link>
-          <h1 className="nome-turma">{turma?.nome}</h1>
+        <div className="turma-unica-header">
+
+          <div className="turma-unica-nome">
+            <Link to={'/turmas'} className="link">
+              <IoIosArrowBack />
+            </Link>
+            <h1 className="nome-turma">{turma?.nome}</h1>
+          </div>
+
+          <button className="button-create-aluno" >
+            Cadastrar Aluno
+            <AiOutlinePlus fontSize={"1.25rem"} />
+          </button>
         </div>
 
 
