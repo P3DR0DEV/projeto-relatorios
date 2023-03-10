@@ -14,8 +14,6 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  width: 65%;
-  margin: auto;
 }
 
 .turma-unica-nome>.link {
@@ -56,6 +54,9 @@
 .turma-unica-header {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
 }
 
 .button-create-aluno {
