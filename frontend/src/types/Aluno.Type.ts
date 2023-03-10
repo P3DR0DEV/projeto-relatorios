@@ -6,6 +6,6 @@ export interface AlunoType {
 }
 
 export interface NewAluno {
-  matricula: number
+  matricula: string
   nome: string
 }

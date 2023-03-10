@@ -5,7 +5,7 @@ import { NewAluno } from '@/types';
 
 export function CriaAluno({ dialog, turmaId }: { dialog: RefObject<HTMLDialogElement>, turmaId: number }) {
   const [formData, setFormData] = useState<NewAluno>({
-    matricula: 0,
+    matricula: '',
     nome: ''
   })
 

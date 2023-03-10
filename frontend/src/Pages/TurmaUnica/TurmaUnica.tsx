@@ -57,7 +57,6 @@ export function TurmaUnica() {
             <p>Relatório</p>
           </div>
           {turma?.Alunos?.map(aluno => {
-            console.log(aluno.id)
             return (
               <AlunoList key={aluno.id} aluno={aluno} />
             )
