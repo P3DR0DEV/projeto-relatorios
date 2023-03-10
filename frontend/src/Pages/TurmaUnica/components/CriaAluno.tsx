@@ -4,10 +4,14 @@ import './CriaAluno.css'
 import { NewAluno } from '@/types';
 
 export function CriaAluno({ dialog, turmaId }: { dialog: RefObject<HTMLDialogElement>, turmaId: number }) {
-  const [formData, setFormData] = useState<NewAluno>()
+  const [formData, setFormData] = useState<NewAluno>({
+    matricula: 0,
+    nome: ''
+  })
 
 
   function handleSubmitForm(e: FormEvent) {
+    console.log(formData)
     e.preventDefault()
     if (formData) {
       criarAluno(turmaId, formData)
@@ -19,7 +23,7 @@ export function CriaAluno({ dialog, turmaId }: { dialog: RefObject<HTMLDialogEle
     fetch('http://localhost:3000/alunos', {
       method: 'POST',
       body: JSON.stringify({
-        turmaId,
+        turma_id: turmaId,
         matricula: Number(matricula),
         nome
       }),
@@ -31,7 +35,7 @@ export function CriaAluno({ dialog, turmaId }: { dialog: RefObject<HTMLDialogEle
   }
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.target
+    const { name, value } = e.currentTarget
 
     setFormData(prevFormData => {
       if (prevFormData) {
@@ -66,7 +70,7 @@ export function CriaAluno({ dialog, turmaId }: { dialog: RefObject<HTMLDialogEle
           <label>
             <input type="number" name='matricula' className="input-dialog" placeholder="Matricula" value={formData?.matricula} onChange={handleInputChange} />
           </label>
-          <button className="submit-newclass">Criar Aluno</button>
+          <button className="submit-newclass" type='submit'>Criar Aluno</button>
         </form>
       </div>
     </dialog>

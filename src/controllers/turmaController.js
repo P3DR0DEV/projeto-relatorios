@@ -11,7 +11,7 @@ const show = async (req, res) => {
     order: [['id', 'DESC'], [Aluno, 'id', 'DESC']],
     include: {
       model: Aluno,
-      attributes: ['nome', 'matricula']
+      attributes: ['id', 'nome', 'matricula']
     }
   })
   return res.json(turma)
@@ -30,7 +30,7 @@ const showOne = async (req, res) => {
       order: [['id', 'DESC'], [Aluno, 'id', 'DESC']],
       include: {
         model: Aluno,
-        attributes: ['matricula', 'nome'],
+        attributes: ['id', 'matricula', 'nome'],
       },
     });
 
