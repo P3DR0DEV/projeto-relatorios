@@ -1,9 +1,9 @@
 import { Turma } from "@/types";
 import { useEffect, useState, MouseEvent, useRef } from "react";
-import { TurmaCard } from "./Components/TurmaCard";
 import "./Turmas.css";
 import { AiOutlinePlus } from "react-icons/ai";
-import { CriarTurma } from "./Components/CriarTurma";
+import { CriarTurma } from "./components/CriarTurma";
+import { TurmaCard } from "./components/TurmaCard";
 
 export function Turmas() {
   const [data, setData] = useState<Turma[]>([]);
@@ -47,6 +47,7 @@ export function Turmas() {
           return (
             <TurmaCard
               key={turma.id}
+              id={turma.id}
               nome={turma.nome}
               Alunos={turma.Alunos?.length}
             />

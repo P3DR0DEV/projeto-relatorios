@@ -36,7 +36,7 @@ const showOne = async (req, res) => {
 
     if (!turma) return res.status(404).json({ errors: ['Not Found'] });
 
-    return res.json({ turma });
+    return res.send(turma);
   } catch (e) {
     return res.status(400).json({ errors: e.errors.map((err) => err.message) });
   }

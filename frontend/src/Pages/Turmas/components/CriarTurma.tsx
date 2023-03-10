@@ -1,7 +1,6 @@
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import "./CriarTurma.css";
 import { FormEvent, RefObject, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export function CriarTurma({ dialog }: { dialog: RefObject<HTMLDialogElement> }) {
   const [nomeTurma, setNomeTurma] = useState('')
