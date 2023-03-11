@@ -1,6 +1,5 @@
 import { ChangeEvent, FormEvent, RefObject, useState } from 'react';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
-import './CriaAluno.css'
 import { NewAluno } from '@/types';
 
 export function CriaAluno({ dialog, turmaId }: { dialog: RefObject<HTMLDialogElement>, turmaId: number }) {
