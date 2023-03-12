@@ -9,6 +9,9 @@ const permissoes = [
   },
   {
     username: '150176'
+  },
+  {
+    username: 'visitante'
   }
 ];
 

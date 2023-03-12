@@ -3,18 +3,22 @@ const { Aluno } = require('../Models/Aluno')
 
 
 const show = async (req, res) => {
-  const turma = await Turma.findAll({
-    attributes: [
-      'id',
-      'nome'
-    ],
-    order: [['id', 'DESC'], [Aluno, 'id', 'DESC']],
-    include: {
-      model: Aluno,
-      attributes: ['id', 'nome', 'matricula']
-    }
-  })
-  return res.json(turma)
+  try {
+    const turma = await Turma.findAll({
+      attributes: [
+        'id',
+        'nome'
+      ],
+      order: [['id', 'DESC'], [Aluno, 'id', 'DESC']],
+      include: {
+        model: Aluno,
+        attributes: ['id', 'nome', 'matricula']
+      }
+    })
+    return res.json(turma)
+  } catch (e) {
+    return res.status(400).json({ errors: e.errors.map((err) => err.message) });
+  }
 }
 
 const showOne = async (req, res) => {

@@ -1,8 +1,10 @@
 import { useState, FormEvent, ChangeEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Form.css'
 
 
 function Form() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     user: '',
     pass: ''
@@ -37,7 +39,10 @@ function Form() {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        if (data) {
+          navigate('/turmas')
+          localStorage.setItem('token', JSON.stringify(data))
+        }
       })
       .catch(e => console.log(e))
   }

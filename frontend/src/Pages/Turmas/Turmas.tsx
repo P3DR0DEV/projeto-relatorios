@@ -4,20 +4,28 @@ import "./Turmas.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import { CriarTurma } from "./components/CriarTurma";
 import { TurmaCard } from "./components/TurmaCard";
+import { useNavigate } from "react-router-dom";
 
 export function Turmas() {
   const [data, setData] = useState<Turma[]>([]);
   const dialog = useRef<HTMLDialogElement>(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
-    fetch("http://localhost:3000/turmas", {
-      headers: {
-        authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiMTUwMzY3IiwiaWF0IjoxNjc4Mzc3MjUyLCJleHAiOjE2Nzg5ODIwNTJ9.LV2O-YDUN5UPB_YQktiESSAzYVUvG2ZMFgo5D_XsYsA",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setData([...data]));
+    const token = JSON.parse(localStorage.getItem("token") || '""')
+
+    if (token.token) {
+      fetch("http://localhost:3000/turmas", {
+        headers: {
+          authorization:
+            `Bearer ${token.token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => setData([...data]));
+    } else {
+      navigate('/')
+    }
   }, []);
 
   function toggleCreateNewClass(e: MouseEvent<HTMLButtonElement>) {
