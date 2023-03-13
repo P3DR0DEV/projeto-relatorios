@@ -6,7 +6,6 @@ import { AlunoList } from "./components/AlunoList"
 import { AiOutlinePlus } from "react-icons/ai"
 import { CriaAluno } from "./components/CriaAluno"
 import './TurmaUnica.css'
-import { toast } from "react-toastify"
 
 export function TurmaUnica() {
   const { id } = useParams()
