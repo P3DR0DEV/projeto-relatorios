@@ -1,5 +1,6 @@
 import { useState, FormEvent, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify'
 import './Form.css'
 
 
@@ -39,9 +40,11 @@ function Form() {
     })
       .then(response => response.json())
       .then(data => {
-        if (data) {
+        if (data.token) {
           navigate('/turmas')
           localStorage.setItem('token', JSON.stringify(data.token))
+        } else {
+          toast.warn(data.errors)
         }
       })
       .catch(e => console.log(e))

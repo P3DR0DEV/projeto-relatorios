@@ -57,6 +57,7 @@
   justify-content: space-between;
   width: 90%;
   margin: auto;
+  align-items: center;
 }
 
 .button-create-aluno {
