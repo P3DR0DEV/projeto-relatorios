@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, RefObject, useState } from 'react';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
-import { NewAluno } from '@/types';
+import { NewAluno, Token } from '@/types';
 
 export function CriaAluno({ dialog, turmaId }: { dialog: RefObject<HTMLDialogElement>, turmaId: number }) {
   const [formData, setFormData] = useState<NewAluno>({
@@ -19,18 +19,22 @@ export function CriaAluno({ dialog, turmaId }: { dialog: RefObject<HTMLDialogEle
   }
 
   function criarAluno(turmaId: number, { matricula, nome }: NewAluno) {
-    fetch('http://localhost:3000/alunos', {
-      method: 'POST',
-      body: JSON.stringify({
-        turma_id: turmaId,
-        matricula: Number(matricula),
-        nome
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiMTUwMzY3IiwiaWF0IjoxNjc4Mzc3MjUyLCJleHAiOjE2Nzg5ODIwNTJ9.LV2O-YDUN5UPB_YQktiESSAzYVUvG2ZMFgo5D_XsYsA'
-      }
-    })
+    const token: Token = JSON.parse(localStorage.getItem('token') || '""')
+
+    if (token) {
+      fetch('http://localhost:3000/alunos', {
+        method: 'POST',
+        body: JSON.stringify({
+          turma_id: turmaId,
+          matricula: Number(matricula),
+          nome
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+          authorization: `Bearer ${token}`
+        }
+      })
+    }
   }
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
