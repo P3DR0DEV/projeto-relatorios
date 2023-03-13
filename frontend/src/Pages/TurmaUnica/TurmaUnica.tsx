@@ -1,27 +1,36 @@
-import { Turma } from "@/types"
+import { Token, Turma } from "@/types"
 import { useEffect, useRef, useState, MouseEvent } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { IoIosArrowBack } from "react-icons/io"
 import { AlunoList } from "./components/AlunoList"
 import { AiOutlinePlus } from "react-icons/ai"
 import { CriaAluno } from "./components/CriaAluno"
 import './TurmaUnica.css'
+import { toast } from "react-toastify"
 
 export function TurmaUnica() {
   const { id } = useParams()
   const [turma, setTurma] = useState<Turma>()
   const dialog = useRef<HTMLDialogElement>(null)
+  const navigate = useNavigate()
+
 
   useEffect(() => {
-    fetch(`http://localhost:3000/turmas/${id}`, {
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-        authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiMTUwMzY3IiwiaWF0IjoxNjc4Mzc3MjUyLCJleHAiOjE2Nzg5ODIwNTJ9.LV2O-YDUN5UPB_YQktiESSAzYVUvG2ZMFgo5D_XsYsA"
-      }
-    })
-      .then(res => res.json())
-      .then(data => setTurma(data))
+    const token: Token = JSON.parse(localStorage.getItem('token') || '""')
+
+    if (token.token) {
+      fetch(`http://localhost:3000/turmas/${id}`, {
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+          authorization:
+            `Bearer ${token}`
+        }
+      })
+        .then(res => res.json())
+        .then(data => setTurma(data))
+    } else {
+      navigate('/')
+    }
   }, [])
 
   function toggleCreateNewClass(e: MouseEvent<HTMLButtonElement>) {

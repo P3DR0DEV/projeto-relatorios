@@ -1,10 +1,10 @@
-import { Turma } from "@/types";
+import { Token, Turma } from "@/types";
 import { useEffect, useState, MouseEvent, useRef } from "react";
-import "./Turmas.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import { CriarTurma } from "./components/CriarTurma";
 import { TurmaCard } from "./components/TurmaCard";
 import { useNavigate } from "react-router-dom";
+import "./Turmas.css";
 
 export function Turmas() {
   const [data, setData] = useState<Turma[]>([]);
@@ -12,7 +12,7 @@ export function Turmas() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem("token") || '""')
+    const token: Token = JSON.parse(localStorage.getItem("token") || '""')
 
     if (token.token) {
       fetch("http://localhost:3000/turmas", {
