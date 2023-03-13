@@ -5,6 +5,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { CriarTurma } from "./components/CriarTurma";
 import { TurmaCard } from "./components/TurmaCard";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export function Turmas() {
   const [data, setData] = useState<Turma[]>([]);
@@ -25,6 +26,7 @@ export function Turmas() {
         .then((response) => response.json())
         .then((data) => setData([...data]));
     } else {
+      toast.error('You must be logged in')
       navigate('/')
     }
   }, []);
