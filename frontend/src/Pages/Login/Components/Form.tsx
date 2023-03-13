@@ -41,7 +41,7 @@ function Form() {
       .then(data => {
         if (data) {
           navigate('/turmas')
-          localStorage.setItem('token', JSON.stringify(data))
+          localStorage.setItem('token', JSON.stringify(data.token))
         }
       })
       .catch(e => console.log(e))

@@ -17,7 +17,7 @@ export function TurmaUnica() {
   useEffect(() => {
     const token: Token = JSON.parse(localStorage.getItem('token') || '""')
 
-    if (token.token) {
+    if (token) {
       fetch(`http://localhost:3000/turmas/${id}`, {
         headers: {
           'Content-type': 'application/json; charset=UTF-8',

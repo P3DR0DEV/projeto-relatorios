@@ -14,11 +14,12 @@ export function Turmas() {
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token") || '""')
 
-    if (token.token) {
+    if (token) {
       fetch("http://localhost:3000/turmas", {
         headers: {
+          'Content-type': 'application/json; charset=UTF-8',
           authorization:
-            `Bearer ${token.token}`,
+            `Bearer ${token}`,
         },
       })
         .then((response) => response.json())
